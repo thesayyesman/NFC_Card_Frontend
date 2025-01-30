@@ -148,7 +148,7 @@ END:VCARD
       alert(
         "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
       );
-    }, 2000); // Timeout duration (2 seconds)
+    }, 10000); // Timeout duration (2 seconds)
 
     // Try to open UPI app directly using the deep link
     window.location.href = upiUrl;
