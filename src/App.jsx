@@ -94,30 +94,72 @@ const App = () => {
     window.location.href = "https://maps.app.goo.gl/5UChp99HUohQ4Eth7";
   };
 
+  const imageToBase64 = (file, callback) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => callback(reader.result.split(",")[1]);
+    reader.onerror = (error) => console.error("Error:", error);
+  };
+
   const handleSaveContact = () => {
-    const vCardData = `
+    const imageUrl = "https://i.postimg.cc/5t6gwsyB/ppppppp.jpg"; // Your image URL
+    fetch(imageUrl)
+      .then((res) => res.blob())
+      .then((blob) => {
+        imageToBase64(blob, (base64Image) => {
+          const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
-FN:"Manu"
-TEL;TYPE=cell:"9024090698"
-EMAIL:"manuarun19@gmail.com"
+FN:Manu
+TEL;TYPE=cell:9024090698
+EMAIL:manuarun19@gmail.com
+URL:https://sharma-estates.com
+PHOTO;TYPE=JPEG;ENCODING=b:${base64Image}
 END:VCARD
-    `.trim();
+                `.trim();
 
-    const blob = new Blob([vCardData], { type: "text/vcard" });
-    const url = URL.createObjectURL(blob);
+          const vcfBlob = new Blob([vCardData], { type: "text/vcard" });
+          const vcfUrl = URL.createObjectURL(vcfBlob);
 
-    // Create a temporary download link
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `Save Contact.vcf`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+          const a = document.createElement("a");
+          a.href = vcfUrl;
+          a.download = `Save Contact.vcf`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
 
-    // Revoke the URL after download
-    URL.revokeObjectURL(url);
+          URL.revokeObjectURL(vcfUrl);
+        });
+      })
+      .catch((error) => console.error("Error loading image:", error));
   };
+
+  //   const handleSaveContact = () => {
+  //     const vCardData = `
+  // BEGIN:VCARD
+  // VERSION:3.0
+  // FN:Manu
+  // TEL;TYPE=cell:9024090698
+  // EMAIL:manuarun19@gmail.com
+  // URL:https://yourwebsite.com
+  // PHOTO;TYPE=JPEG;ENCODING=b:[BASE64_ENCODED_IMAGE]
+  // END:VCARD
+  //     `.trim();
+
+  //     const blob = new Blob([vCardData], { type: "text/vcard" });
+  //     const url = URL.createObjectURL(blob);
+
+  //     // Create a temporary download link
+  //     const a = document.createElement("a");
+  //     a.href = url;
+  //     a.download = `Save Contact.vcf`;
+  //     document.body.appendChild(a);
+  //     a.click();
+  //     document.body.removeChild(a);
+
+  //     // Revoke the URL after download
+  //     URL.revokeObjectURL(url);
+  //   };
 
   const pay = () => {
     const phoneNumber = "9024090698"; // Replace with the target phone number
