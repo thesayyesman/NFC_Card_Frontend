@@ -98,9 +98,9 @@ const App = () => {
     const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
-FN:"Devendra"
-TEL;TYPE=cell:"7023061644"
-EMAIL:"deva@hack.com"
+FN:"Manu"
+TEL;TYPE=cell:"9024090698"
+EMAIL:"manuarun19@gmail.com"
 END:VCARD
     `.trim();
 
