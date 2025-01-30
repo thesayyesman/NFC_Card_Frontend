@@ -110,7 +110,7 @@ const App = () => {
           const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
-FN:Manu
+FN:Manu Sharma
 TEL:9024090698
 EMAIL:manuarun19@gmail.com
 URL:https://sharma-estates.com
