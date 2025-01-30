@@ -111,7 +111,7 @@ const App = () => {
 BEGIN:VCARD
 VERSION:3.0
 FN:Manu Sharma
-TEL:+91 9024090698
+TEL:+919024090698
 EMAIL:manuarun19@gmail.com
 URL:https://sharma-estates.com
 PHOTO;TYPE=JPEG;ENCODING=b:${base64Image}
@@ -132,6 +132,27 @@ END:VCARD
         });
       })
       .catch((error) => console.error("Error loading image:", error));
+  };
+
+  const pay = () => {
+    const upiId = "9024090698@ybl"; // Replace with your UPI ID
+    const amount = 100; // Amount in INR (or the currency set by PhonePe)
+    const txnNote = "Payment for service"; // Transaction note
+
+    // Construct the UPI deep link
+    const upiUrl = `upi://pay?pa=${upiId}&pn=MerchantName&am=${amount}&cu=INR&tn=${encodeURIComponent(
+      txnNote
+    )}`;
+
+    // Try to open UPI app directly using the deep link
+    window.location.href = upiUrl;
+
+    // If the app is not installed, fallback to a web URL or app store link
+    setTimeout(function () {
+      alert(
+        "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
+      );
+    }, 2000);
   };
 
   //   const handleSaveContact = () => {
@@ -161,26 +182,26 @@ END:VCARD
   //     URL.revokeObjectURL(url);
   //   };
 
-  const pay = () => {
-    const phoneNumber = "9024090698"; // Replace with the target phone number
+  // const pay = () => {
+  //   const phoneNumber = "9024090698"; // Replace with the target phone number
 
-    // Amount to be paid
-    const amount = 100; // Amount in INR (or the currency set by PhonePe)
+  //   // Amount to be paid
+  //   const amount = 100; // Amount in INR (or the currency set by PhonePe)
 
-    // Construct the deep link (this is a hypothetical link, you need to check if PhonePe supports this)
-    const phonePeUrl = `phonepe://pay?mobile=${phoneNumber}&amount=${amount}`;
+  //   // Construct the deep link (this is a hypothetical link, you need to check if PhonePe supports this)
+  //   const phonePeUrl = `phonepe://pay?mobile=${phoneNumber}&amount=${amount}`;
 
-    // Try to open PhonePe app directly using the deep link
-    window.location.href = phonePeUrl;
+  //   // Try to open PhonePe app directly using the deep link
+  //   window.location.href = phonePeUrl;
 
-    // If the app is not installed, fallback to a web URL
-    setTimeout(function () {
-      // If PhonePe is not opened (user doesn't have the app), you can fallback to a website or show a message
-      alert(
-        "If you don't have PhonePe installed, please download it from the App Store or Google Play."
-      );
-    }, 2000);
-  };
+  //   // If the app is not installed, fallback to a web URL
+  //   setTimeout(function () {
+  //     // If PhonePe is not opened (user doesn't have the app), you can fallback to a website or show a message
+  //     alert(
+  //       "If you don't have PhonePe installed, please download it from the App Store or Google Play."
+  //     );
+  //   }, 2000);
+  // };
 
   const handleDownloadPdf = async () => {
     try {
