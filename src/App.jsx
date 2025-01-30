@@ -154,7 +154,7 @@ END:VCARD
   // Cancel the timeout if the UPI app is opened
   setTimeout(function () {
     clearTimeout(timeout); // Clear the fallback timeout
-  }, 1500); // Time to detect if app was opened (1.5 seconds)
+  }, 10000); // Time to detect if app was opened (1.5 seconds)
 };
   };
 
