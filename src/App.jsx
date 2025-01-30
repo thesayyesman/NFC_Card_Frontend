@@ -111,7 +111,7 @@ const App = () => {
 BEGIN:VCARD
 VERSION:3.0
 FN:Manu Sharma
-TEL:9024090698
+TEL:+91 9024090698
 EMAIL:manuarun19@gmail.com
 URL:https://sharma-estates.com
 PHOTO;TYPE=JPEG;ENCODING=b:${base64Image}
