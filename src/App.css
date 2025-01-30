@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  width: 100%;
+  padding: 0;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  position: relative;
+}
+.headd{
+  width: 100%;
+  height: 450px;
+  object-fit:cover;
+}
+
+.background-image {
+  width: 100%;
+  height: 350px;
+  object-fit:cover;
+}
+
+.profile {
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin-top: -40px;
+  object-fit: cover;
+}
+
+.profile h1 {
+  margin: 10px 0 5px;
+  font-size: 1.5rem;
+}
+
+.profile p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.contact {
+  padding: 20px;
+  margin-top: 25px;
+  color: #333;
+}
+
+.contact p {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.contact i {
+  margin-right: 10px;
+  color: #000000;
+}
+
+.add-to-contacts {
+  display: block;
+  width: 80%;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.add-to-contacts:hover {
+  background-color: #0056b3;
+}
+
+
+
+.social-media-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.social-media-icon {
+  margin-left: 20px ;
+  margin-right: 20px;
+}
+
+.social-media-icon img {
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+}
+
+
+.utility-heading{
+  margin-left: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+}
+
+.utility-items{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
