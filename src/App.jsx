@@ -140,7 +140,7 @@ END:VCARD
     const txnNote = "Payment for service"; // Transaction note
 
     // Construct the UPI deep link
-    const upiUrl = `upi://pay?pa=${upiId}&pn=MerchantName&am=${amount}&cu=INR&tn=${encodeURIComponent(
+    const upiUrl = `upi://pay?pa=${upiId}&pn=MerchantName&cu=INR&tn=${encodeURIComponent(
       txnNote
     )}`;
 
