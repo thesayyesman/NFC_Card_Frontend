@@ -152,7 +152,7 @@ END:VCARD
       alert(
         "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
       );
-    }, 2000);
+    }, 10000);
   };
 
   //   const handleSaveContact = () => {
