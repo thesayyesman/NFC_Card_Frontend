@@ -143,19 +143,20 @@ END:VCARD
       txnNote
     )}`;
 
-   // Create a timeout to trigger fallback message
-  const timeout = setTimeout(function () {
-    alert("If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play.");
-  }, 2000); // Timeout duration (2 seconds)
+    // Create a timeout to trigger fallback message
+    const timeout = setTimeout(function () {
+      alert(
+        "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
+      );
+    }, 2000); // Timeout duration (2 seconds)
 
-  // Try to open UPI app directly using the deep link
-  window.location.href = upiUrl;
+    // Try to open UPI app directly using the deep link
+    window.location.href = upiUrl;
 
-  // Cancel the timeout if the UPI app is opened
-  setTimeout(function () {
-    clearTimeout(timeout); // Clear the fallback timeout
-  }, 10000); // Time to detect if app was opened (1.5 seconds)
-};
+    // Cancel the timeout if the UPI app is opened
+    setTimeout(function () {
+      clearTimeout(timeout); // Clear the fallback timeout
+    }, 10000); // Time to detect if app was opened (1.5 seconds)
   };
 
   //   const handleSaveContact = () => {
