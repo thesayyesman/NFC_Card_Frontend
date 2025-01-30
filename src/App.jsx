@@ -136,7 +136,6 @@ END:VCARD
 
   const pay = () => {
     const upiId = "9024090698@ybl"; // Replace with your UPI ID
-    const amount = 100; // Amount in INR (or the currency set by PhonePe)
     const txnNote = "Payment for service"; // Transaction note
 
     // Construct the UPI deep link
@@ -144,15 +143,19 @@ END:VCARD
       txnNote
     )}`;
 
-    // Try to open UPI app directly using the deep link
-    window.location.href = upiUrl;
+   // Create a timeout to trigger fallback message
+  const timeout = setTimeout(function () {
+    alert("If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play.");
+  }, 2000); // Timeout duration (2 seconds)
 
-    // If the app is not installed, fallback to a web URL or app store link
-    setTimeout(function () {
-      alert(
-        "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
-      );
-    }, 10000);
+  // Try to open UPI app directly using the deep link
+  window.location.href = upiUrl;
+
+  // Cancel the timeout if the UPI app is opened
+  setTimeout(function () {
+    clearTimeout(timeout); // Clear the fallback timeout
+  }, 1500); // Time to detect if app was opened (1.5 seconds)
+};
   };
 
   //   const handleSaveContact = () => {
