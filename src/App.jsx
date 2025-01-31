@@ -143,43 +143,21 @@ END:VCARD
       txnNote
     )}`;
 
-    try {
-      // Try to open UPI app directly using the deep link
-      window.location.href = upiUrl;
-    } catch (error) {
-      console.log(error);
-      setTimeout(function () {
-        // If PhonePe is not opened (user doesn't have the app), you can fallback to a website or show a message
-        alert(
-          "If you don't have PhonePe installed, please download it from the App Store or Google Play."
-        );
-      }, 5000);
-    }
+    // Create a timeout to trigger fallback message
+    const timeout = setTimeout(function () {
+      alert(
+        "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
+      );
+    }, 10000); // Timeout duration (2 seconds)
+
+    // Try to open UPI app directly using the deep link
+    window.location.href = upiUrl;
+
+    // Cancel the timeout if the UPI app is opened
+    setTimeout(function () {
+      clearTimeout(timeout); // Clear the fallback timeout
+    }, 10000); // Time to detect if app was opened (1.5 seconds)
   };
-
-  // // If the app is not installed, fallback to a web URL
-  // setTimeout(function () {
-  //   // If PhonePe is not opened (user doesn't have the app), you can fallback to a website or show a message
-  //   alert(
-  //     "If you don't have PhonePe installed, please download it from the App Store or Google Play."
-  //   );
-  // }, 2000);
-
-  //   // Create a timeout to trigger fallback message
-  //   const timeout = setTimeout(function () {
-  //     alert(
-  //       "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
-  //     );
-  //   }, 10000); // Timeout duration (2 seconds)
-
-  //   // Try to open UPI app directly using the deep link
-  //   window.location.href = upiUrl;
-
-  //   // Cancel the timeout if the UPI app is opened
-  //   setTimeout(function () {
-  //     clearTimeout(timeout); // Clear the fallback timeout
-  //   }, 10000); // Time to detect if app was opened (1.5 seconds)
-  // };
 
   //   const handleSaveContact = () => {
   //     const vCardData = `
@@ -208,7 +186,7 @@ END:VCARD
   //     URL.revokeObjectURL(url);
   //   };
 
-  // --------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------
 
   // const pay = () => {
   //   const phoneNumber = "9024090698"; // Replace with the target phone number
