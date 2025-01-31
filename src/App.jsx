@@ -135,29 +135,68 @@ END:VCARD
   };
 
   const pay = () => {
-    const upiId = "9024090698@ybl"; // Replace with your UPI ID
+    const upiId = "merchant@upi"; // Replace with your UPI ID
     const txnNote = "Payment for service"; // Transaction note
 
-    // Construct the UPI deep link
+    // Construct the UPI deep link without amount
     const upiUrl = `upi://pay?pa=${upiId}&pn=MerchantName&cu=INR&tn=${encodeURIComponent(
       txnNote
     )}`;
 
-    // Create a timeout to trigger fallback message
-    const timeout = setTimeout(function () {
+    let fallbackTimeout;
+
+    // Function to detect if the user switched to another app (UPI app opened)
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        // User left the page (probably opened UPI app), so clear the fallback timeout
+        clearTimeout(fallbackTimeout);
+        document.removeEventListener(
+          "visibilitychange",
+          handleVisibilityChange
+        );
+      }
+    };
+
+    // Add event listener to track if the user leaves the page
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // Set fallback timeout (shows alert only if user doesn't switch apps)
+    fallbackTimeout = setTimeout(() => {
       alert(
         "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
       );
-    }, 10000); // Timeout duration (2 seconds)
+      document.removeEventListener("visibilitychange", handleVisibilityChange); // Remove event listener
+    }, 3000); // 3 seconds delay
 
-    // Try to open UPI app directly using the deep link
+    // Open the UPI payment app
     window.location.href = upiUrl;
-
-    // Cancel the timeout if the UPI app is opened
-    setTimeout(function () {
-      clearTimeout(timeout); // Clear the fallback timeout
-    }, 10000); // Time to detect if app was opened (1.5 seconds)
   };
+  //========================================================
+
+  // const pay = () => {
+  //   const upiId = "9024090698@ybl"; // Replace with your UPI ID
+  //   const txnNote = "Payment for service"; // Transaction note
+
+  //   // Construct the UPI deep link
+  //   const upiUrl = `upi://pay?pa=${upiId}&pn=MerchantName&cu=INR&tn=${encodeURIComponent(
+  //     txnNote
+  //   )}`;
+
+  //   // Create a timeout to trigger fallback message
+  //   const timeout = setTimeout(function () {
+  //     alert(
+  //       "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
+  //     );
+  //   }, 10000); // Timeout duration (2 seconds)
+
+  //   // Try to open UPI app directly using the deep link
+  //   window.location.href = upiUrl;
+
+  //   // Cancel the timeout if the UPI app is opened
+  //   setTimeout(function () {
+  //     clearTimeout(timeout); // Clear the fallback timeout
+  //   }, 10000); // Time to detect if app was opened (1.5 seconds)
+  // };
 
   //   const handleSaveContact = () => {
   //     const vCardData = `
