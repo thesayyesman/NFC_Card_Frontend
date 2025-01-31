@@ -135,7 +135,7 @@ END:VCARD
   };
 
   const pay = () => {
-    const upiId = "merchant@upi"; // Replace with your UPI ID
+    const upiId = "9024090698@ybl"; // Replace with your UPI ID
     const txnNote = "Payment for service"; // Transaction note
 
     // Construct the UPI deep link without amount
@@ -166,7 +166,7 @@ END:VCARD
         "If you don't have a UPI app like PhonePe, please download it from the App Store or Google Play."
       );
       document.removeEventListener("visibilitychange", handleVisibilityChange); // Remove event listener
-    }, 3000); // 3 seconds delay
+    }, 5000); // 3 seconds delay
 
     // Open the UPI payment app
     window.location.href = upiUrl;
@@ -339,7 +339,7 @@ END:VCARD
       {/* Contact Information */}
       <div className="contact">
         <p onClick={sendEmail}>
-          <i className="fas fa-envelope"></i> manuarun19@gmaol.com
+          <i className="fas fa-envelope"></i> manuarun19@gmail.com
         </p>
 
         <p onClick={call}>
