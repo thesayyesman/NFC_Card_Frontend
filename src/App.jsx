@@ -114,8 +114,7 @@ FN:Manu Sharma
 TEL:+919024090698
 EMAIL:manuarun19@gmail.com
 URL:https://sharma-estates.com
-item2.URL:https://www.instagram.com/your_instagram_username
-item2.X-ABLabel:Instagram
+URL:https://www.instagram.com/manu_sharma_1903/
 PHOTO;TYPE=JPEG;ENCODING=b:${base64Image}
 END:VCARD
                 `.trim();
